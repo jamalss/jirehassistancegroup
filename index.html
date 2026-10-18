@@ -42,7 +42,6 @@
   <meta name="twitter:title" content="Jireh Assistance Group — Helping Families In Need">
   <meta name="twitter:description" content="Jireh Assistance Group helps families in need with food, clothing, and hope in Point Fortin, Trinidad.">
   <meta name="twitter:image" content="https://www.jirehassistancegroup.com/og-image.jpg">
-  <meta name="twitter:url">
 
   <title>Jireh Assistance Group — Helping Families In Need</title>
 
@@ -1050,7 +1049,23 @@
       .navbar-brand { font-size: 1.1rem; }
       .final-cta { padding: 4rem 0; }
     }
+
+    /* ---- Bug-fix additions ---- */
+    /* Clip + fill photo containers so object-fit-cover actually crops and rounded corners apply */
+    .hero-img-block, .about-img-block, .proj-thumb { overflow: hidden; }
+    .hero-img-block img, .about-img-block img, .proj-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    /* Footer contact rows: name / role / phone stacked */
+    .ft-ci > div { display: flex; flex-direction: column; gap: 1px; }
+    .ft-nm { color: rgba(255,255,255,0.9); font-weight: 700; font-size: 0.88rem; }
+    .ft-rl { color: rgba(255,255,255,0.6); font-size: 0.78rem; }
+    /* Respect reduced-motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .fu { opacity: 1 !important; transform: none !important; animation: none !important; transition: none !important; }
+      .float-wa::before, .float-wa::after { animation: none !important; }
+    }
   </style>
+  <!-- No-JS fallback: scroll-reveal content must never stay hidden -->
+  <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 </head>
 
 <body>
@@ -1071,7 +1086,7 @@
         <a href="https://wa.me/18683961806?text=Hello%20Jireh%20Assistance%20Group%2C%20I%20would%20like%20to%20donate%20or%20help."
            class="nav-donate-btn nav-link d-none d-lg-inline-flex"
            target="_blank" rel="noopener noreferrer"
-           aria-label="Donate via WhatsApp — opens WhatsApp">
+           aria-label="Donate Now via WhatsApp — opens WhatsApp">
           <i class="fas fa-heart" aria-hidden="true"></i> Donate Now
         </a>
         <button class="navbar-toggler ms-1" type="button"
@@ -1092,7 +1107,7 @@
         <a href="https://wa.me/18683961806?text=Hello%20Jireh%20Assistance%20Group%2C%20I%20would%20like%20to%20donate%20or%20help."
            class="nav-donate-btn nav-link d-lg-none mt-2 justify-content-center"
            target="_blank" rel="noopener noreferrer"
-           aria-label="Donate via WhatsApp">
+           aria-label="Donate Now via WhatsApp">
           <i class="fas fa-heart" aria-hidden="true"></i> Donate Now
         </a>
       </div>
@@ -1109,12 +1124,12 @@
       <div class="row align-items-center g-5">
 
         <div class="col-lg-6">
-          <div class="hero-eyebrow fu fd1" aria-label="Community initiative — Point Fortin, Trinidad">
+          <div class="hero-eyebrow fu fd1">
             <i class="fas fa-heart" aria-hidden="true"></i>
             Community · Point Fortin, Trinidad
           </div>
           <h1 id="hero-heading" class="fu fd2">
-            Helping Families In Need <em>Restoring Hope With What We Give</em>
+            Helping Families In Need, <em>Restoring Hope With What We Give</em>
           </h1>
           <p class="hero-subtext fu fd3">
             Your donation helps provide food, clothing, household essentials, and hope to struggling families in our community. Every little bit counts.
@@ -1130,7 +1145,7 @@
             <a href="https://wa.me/18683961806?text=Hello%20Jireh%20Assistance%20Group%2C%20I%20would%20like%20to%20volunteer%20my%20time."
                class="btn-outline-hero"
                target="_blank" rel="noopener noreferrer"
-               aria-label="Volunteer with Jireh Assistance Group">
+               aria-label="Volunteer With Us — message Jireh Assistance Group on WhatsApp">
               Volunteer With Us
             </a>
           </div>
@@ -1138,19 +1153,19 @@
 
         <div class="col-lg-6 fu fd4">
           <div class="hero-visual">
-            <div class="hero-img-block" role="img" aria-label="Jireh Assistance Group volunteers distributing food packages to families">
+            <div class="hero-img-block">
               <!--<i class="fas fa-hands-helping" aria-hidden="true"></i>-->
-              <img src="images/jag-distribution-gathering.webp" class="img-fluid mx-auto object-fit-cover" alt="Jireh Assistance Group Distribution Gathering" loading="eager" fetch-priority="high">
+              <img src="images/jag-distribution-gathering.webp" class="img-fluid mx-auto object-fit-cover" alt="Jireh Assistance Group Distribution Gathering" width="800" height="500" loading="eager" decoding="sync" fetchpriority="high" onerror="this.style.display='none'">
               <!--
               <span>Add Your Community Photo Here</span>
               <small style="font-size:0.72rem; opacity:0.45;">Replace placeholder with a real volunteer or distribution image</small>
               -->
             </div>
-            <div class="stat-float s1" aria-label="500 plus families helped">
+            <div class="stat-float s1">
               <div class="sn">550+</div>
               <div class="sl">Families Helped</div>
             </div>
-            <div class="stat-float s2" aria-label="25 plus active volunteers">
+            <div class="stat-float s2">
               <div class="sn">75+</div>
               <div class="sl">Food Drives</div>
             </div>
@@ -1194,19 +1209,19 @@
     <div class="container">
       <div class="row g-0">
         <div class="col-6 col-md-3 impact-item">
-          <div class="impact-num" aria-label="500 plus families helped">550+</div>
+          <div class="impact-num">550+</div>
           <div class="impact-label">Families Helped</div>
         </div>
         <div class="col-6 col-md-3 impact-item">
-          <div class="impact-num" aria-label="40 plus food drives">75+</div>
+          <div class="impact-num">75+</div>
           <div class="impact-label">Food Drives</div>
         </div>
         <div class="col-6 col-md-3 impact-item">
-          <div class="impact-num" aria-label="25 plus volunteers">25+</div>
+          <div class="impact-num">25+</div>
           <div class="impact-label">Volunteers</div>
         </div>
         <div class="col-6 col-md-3 impact-item">
-          <div class="impact-num" aria-label="Thousands of items distributed">1,000s</div>
+          <div class="impact-num">1,000s</div>
           <div class="impact-label">Items Distributed</div>
         </div>
       </div>
@@ -1222,8 +1237,8 @@
       <div class="row align-items-center g-5">
 
         <div class="col-lg-6 reveal">
-          <div class="about-img-block" role="img" aria-label="Jireh Assistance Group founders and volunteers at a community event in Point Fortin">
-            <img src="images/jag-distribution-gathering.webp" class="img-fluid mx-auto object-fit-cover" alt="Jireh Assistance Group Distribution Gathering" loading="lazy">
+          <div class="about-img-block">
+            <img src="images/jag-distribution-gathering.webp" class="img-fluid mx-auto object-fit-cover" alt="Jireh Assistance Group Distribution Gathering" width="800" height="500" loading="lazy" decoding="async" onerror="this.style.display='none'">
             <!--<i class="fas fa-users" aria-hidden="true"></i>
             <img src="images/jag-distribution-gathering.webp" class="img-fluid mx-auto object-fit-cover" alt="Jireh Assistance Group Distribution Gathering" loading="lazy">
             <span>Add Your Team or Community Photo Here</span>-->
@@ -1333,7 +1348,7 @@
             <a href="https://wa.me/18683961806?text=Hello%20Jireh%20Assistance%20Group%2C%20I%20would%20like%20to%20arrange%20a%20food%20and%20supplies%20donation."
                class="btn-wa w-100 justify-content-center"
                target="_blank" rel="noopener noreferrer"
-               aria-label="Arrange a food or supplies donation via WhatsApp">
+               aria-label="Arrange Donation of food or supplies via WhatsApp">
               <i class="fab fa-whatsapp" aria-hidden="true"></i>
               Arrange Donation
             </a>
@@ -1349,7 +1364,7 @@
             <h3 class="h4" id="donate-financial-heading">Financial Donations</h3>
             <p>Your financial support helps us provide food, hygiene products, essentials, and assistance to families who need them most.</p>
 
-            <div class="donation-info-box" aria-label="What your donation covers">
+            <div class="donation-info-box" role="group" aria-label="What your donation covers">
               <p style="font-size:0.8rem; font-weight:700; color:var(--text-dark); margin-bottom:0.5rem;">
                 <i class="fas fa-info-circle me-1" style="color:var(--gold);" aria-hidden="true"></i>
                 What Your Donation Covers
@@ -1370,7 +1385,7 @@
             <a href="https://wa.me/18683961806?text=Hello%20Jireh%20Assistance%20Group%2C%20I%20would%20like%20to%20make%20a%20financial%20donation%20to%20support%20your%20mission."
                class="btn-wa w-100 justify-content-center"
                target="_blank" rel="noopener noreferrer"
-               aria-label="Make a financial donation via WhatsApp">
+               aria-label="Donate Financially via WhatsApp">
               <i class="fab fa-whatsapp" aria-hidden="true"></i>
               Donate Financially
             </a>
@@ -1416,7 +1431,7 @@
             <a href="https://wa.me/18683961806?text=Hello%20Jireh%20Assistance%20Group%2C%20I%20would%20like%20to%20volunteer%20my%20time%20to%20help%20the%20community."
                class="btn-gr w-100 justify-content-center"
                target="_blank" rel="noopener noreferrer"
-               aria-label="Join the Jireh Assistance Group volunteer team via WhatsApp">
+               aria-label="Join Our Volunteer Team via WhatsApp">
               <i class="fab fa-whatsapp" aria-hidden="true"></i>
               Join Our Volunteer Team
             </a>
@@ -1444,8 +1459,8 @@
 
         <div class="col-md-4 reveal">
           <div class="proj-card">
-            <div class="proj-thumb pt-green" role="img" aria-label="Volunteers packing food boxes at the monthly community food drive">
-              <img src="images/month-end-food-drive.webp" class="img-fluid mx-auto object-fit-cover" alt="Month End Community Food Drive Image" loading="lazy">
+            <div class="proj-thumb pt-green">
+              <img src="images/month-end-food-drive.webp" class="img-fluid mx-auto object-fit-cover" alt="Month End Community Food Drive" width="700" height="390" loading="lazy" decoding="async" onerror="this.style.display='none'">
               <!--<i class="fas fa-box-open" aria-hidden="true"></i>-->
             </div>
             <div class="proj-body">
@@ -1455,7 +1470,7 @@
               <a href="https://wa.me/18683961806?text=Hello%20Jireh%20Assistance%20Group%2C%20I%20would%20like%20to%20participate%20in%20the%20monthly%20community%20food%20drive."
                  class="btn-gr"
                  target="_blank" rel="noopener noreferrer"
-                 aria-label="Participate in the monthly food drive via WhatsApp">
+                 aria-label="Get Involved in the monthly food drive via WhatsApp">
                 <i class="fab fa-whatsapp" aria-hidden="true"></i> Get Involved
               </a>
             </div>
@@ -1464,8 +1479,8 @@
 
         <div class="col-md-4 reveal">
           <div class="proj-card">
-            <div class="proj-thumb pt-gold" role="img" aria-label="Children smiling and receiving Christmas gifts at the annual Xmas Treat programme">
-              <img src="images/christmas-kids-treat.webp" class="img-fluid mx-auto object-fit-cover" alt="Christmas Treat For Kids Image" loading="lazy">
+            <div class="proj-thumb pt-gold">
+              <img src="images/christmas-kids-treat.webp" class="img-fluid mx-auto object-fit-cover" alt="Christmas Treat For Kids" width="700" height="390" loading="lazy" decoding="async" onerror="this.style.display='none'">
               <!--<i class="fas fa-gift" aria-hidden="true"></i>-->
             </div>
             <div class="proj-body">
@@ -1484,8 +1499,8 @@
 
         <div class="col-md-4 reveal">
           <div class="proj-card">
-            <div class="proj-thumb pt-earth" role="img" aria-label="Emergency food and essential packages prepared for immediate distribution to families in crisis">
-              <img src="images/emergency-assistance-support.webp" class="img-fluid mx-auto object-fit-cover" alt="Emergency Assistance Support Image" loading="lazy">
+            <div class="proj-thumb pt-earth">
+              <img src="images/emergency-assistance-support.webp" class="img-fluid mx-auto object-fit-cover" alt="Emergency Assistance Support" width="700" height="390" loading="lazy" decoding="async" onerror="this.style.display='none'">
               <!--<i class="fas fa-hands-helping" aria-hidden="true"></i>-->
             </div>
             <div class="proj-body">
@@ -1495,7 +1510,7 @@
               <a href="https://wa.me/18683961806?text=Hello%20Jireh%20Assistance%20Group%2C%20I%20am%20in%20need%20of%20urgent%20assistance%20or%20I%20know%20a%20family%20that%20needs%20help."
                  class="btn-gr"
                  target="_blank" rel="noopener noreferrer"
-                 aria-label="Request emergency assistance or refer a family via WhatsApp">
+                 aria-label="Request Help — emergency assistance or refer a family via WhatsApp">
                 <i class="fab fa-whatsapp" aria-hidden="true"></i> Request Help
               </a>
             </div>
@@ -1521,17 +1536,64 @@
 
       <div class="row g-4 justify-content-center">
 
-        <div class="col-lg-5 reveal">
+        <!-- ===== TEMPORARY: Barbecue Tickets — Oct 30. Remove or replace this card after the event date. ===== -->
+        <div class="col-lg-4 col-md-6 reveal">
+          <div class="ev-card" role="article" aria-labelledby="barbecue-heading">
+            <div class="ev-date">
+              <span class="ev-day">30</span>
+              <span class="ev-month">October · Friday</span>
+            </div>
+            <h3 class="text-white h4" id="barbecue-heading">Barbecue Tickets</h3>
+            <p>Good Food, Great Vibes, Support a Greater Cause. Get your ticket and join us for a barbecue plate with all the sides.</p>
+            <div class="ev-det">
+              <i class="fas fa-clock" aria-hidden="true"></i>
+              <span>11:30 PM</span>
+            </div>
+            <div class="ev-det">
+              <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+              <span>At Kemba's Residence</span>
+            </div>
+            <div class="ev-det">
+              <i class="fas fa-tag" aria-hidden="true"></i>
+              <span>Chicken $55 &nbsp;·&nbsp; Fish $60</span>
+            </div>
+            <div class="ev-det">
+              <i class="fas fa-utensils" aria-hidden="true"></i>
+              <span>Sides: Fries / Rice / Pasta Salad / Fresh Salad</span>
+            </div>
+            <div class="ev-det">
+              <i class="fas fa-bottle-water" aria-hidden="true"></i>
+              <span>Drinks on sale: Coca Cola, Apple J, Smalta, Water</span>
+            </div>
+            <div class="ev-det">
+              <i class="fas fa-phone" aria-hidden="true"></i>
+              <span>Contact: 1-868-396-1806</span>
+            </div>
+            <div class="ev-det mb-4">
+              <i class="fas fa-quote-left" aria-hidden="true"></i>
+              <span>"Your Support Makes a Difference."</span>
+            </div>
+            <a href="https://wa.me/18683961806?text=Hello%20Jireh%20Assistance%20Group%2C%20I%20would%20like%20to%20get%20Barbecue%20tickets%20for%20the%20October%2030%20event."
+               class="btn-gold-solid"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Get Tickets via WhatsApp — Barbecue, October 30">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i>
+              Get Tickets via WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 reveal">
           <div class="ev-card" role="article" aria-labelledby="bake-shark-heading">
-            <div class="ev-date" aria-label="Event date: Saturday, September 26">
-              <span class="ev-day">26</span>
-              <span class="ev-month">September · Saturday</span>
+            <div class="ev-date">
+              <span class="ev-day" style="font-size:1.15rem; padding-top:0.35rem;">Date</span>
+              <span class="ev-month">To Be Announced</span>
             </div>
             <h3 class="text-white h4" id="bake-shark-heading">Bake N Shark Sale</h3>
             <p>A community fundraising event featuring freshly made Bake N Shark. All proceeds go directly to funding our food drive and assistance programmes.</p>
             <div class="ev-det">
-              <i class="fas fa-clock" aria-hidden="true"></i>
-              <span>From 4:00 PM onwards</span>
+              <i class="fas fa-calendar-day" aria-hidden="true"></i>
+              <span>Next date will be announced soon</span>
             </div>
             <div class="ev-det">
               <i class="fas fa-tag" aria-hidden="true"></i>
@@ -1541,19 +1603,19 @@
               <i class="fas fa-quote-left" aria-hidden="true"></i>
               <span>"Be a part of this event and contribute to providing a better life."</span>
             </div>
-            <a href="https://wa.me/18683961806?text=Hello%20Jireh%20Assistance%20Group%2C%20I%20would%20like%20to%20reserve%20a%20Bake%20N%20Shark%20for%20the%20August%201%20fundraiser."
-               class="btn-gold-solid"
+            <a href="https://wa.me/18683961806?text=Hello%20Jireh%20Assistance%20Group%2C%20I%20would%20like%20to%20know%20the%20date%20of%20the%20next%20Bake%20N%20Shark%20sale."
+               class="btn-ghost-w"
                target="_blank" rel="noopener noreferrer"
-               aria-label="Reserve Bake N Shark for the August 1 event via WhatsApp">
+               aria-label="Ask About Next Date of the Bake N Shark Sale via WhatsApp">
               <i class="fab fa-whatsapp" aria-hidden="true"></i>
-              Reserve via WhatsApp
+              Ask About Next Date
             </a>
           </div>
         </div>
 
-        <div class="col-lg-5 reveal">
+        <div class="col-lg-4 col-md-6 reveal">
           <div class="ev-card" role="article" aria-labelledby="food-drive-event-heading">
-            <div class="ev-date" aria-label="Monthly recurring event">
+            <div class="ev-date">
               <span class="ev-day" style="font-size:1.15rem; padding-top:0.35rem;">Every</span>
               <span class="ev-month">Month-End</span>
             </div>
@@ -1601,11 +1663,6 @@
 
         <div class="col-md-4 reveal">
           <div class="testi-card">
-            <div class="stars" aria-label="5 out of 5 stars">
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-            </div>
             <p class="testi-text">
               "Gdm to all who donated towards this hamper I received you guys really don't know what you did for me, much thanks, it was greatly appreciated."
             </p>
@@ -1621,11 +1678,6 @@
 
         <div class="col-md-4 reveal">
           <div class="testi-card">
-            <div class="stars" aria-label="5 out of 5 stars">
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-            </div>
             <p class="testi-text">
               "Girl every month you bless me so much I does be so greatful for you god knows I needed you it does be so hard for me but God always pulls true."
             </p>
@@ -1641,18 +1693,13 @@
 
         <div class="col-md-4 reveal">
           <div class="testi-card">
-            <div class="stars" aria-label="5 out of 5 stars">
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
-              <i class="fas fa-star" aria-hidden="true"></i>
-            </div>
             <p class="testi-text">
               "Thanks so much. Thank u thank u."
             </p>
             <div class="testi-auth">
               <div class="testi-av" aria-hidden="true">T</div>
               <div>
-                <div class="testi-nm">Hamper Recepient</div>
+                <div class="testi-nm">Hamper Recipient</div>
                 <div class="testi-rl">Point Fortin, Trinidad</div>
               </div>
             </div>
@@ -1661,9 +1708,6 @@
 
       </div>
 
-      <p style="text-align:center; font-size:0.75rem; color:var(--text-mid); margin-top:1.75rem; font-style:italic;">
-        <!--Testimonials are representative. Replace with verified real community voices and names where permission is given.-->
-      </p>
     </div>
   </section>
 
@@ -1788,7 +1832,7 @@
         <a href="https://wa.me/18683961806?text=Hello%20Jireh%20Assistance%20Group%2C%20I%20would%20like%20to%20learn%20more%20about%20how%20I%20can%20help."
            class="btn-ghost-w"
            target="_blank" rel="noopener noreferrer"
-           aria-label="Message Jireh Assistance Group on WhatsApp">
+           aria-label="Message Us on WhatsApp — Jireh Assistance Group">
           <i class="fab fa-whatsapp" aria-hidden="true"></i>
           Message Us on WhatsApp
         </a>
@@ -1809,7 +1853,7 @@
           <p class="ft-tagline">
             Helping families in need through community-driven food drives, emergency assistance, and volunteer outreach in Point Fortin, Trinidad.
           </p>
-          <div class="ft-social" aria-label="Follow us on social media">
+          <div class="ft-social" role="group" aria-label="Follow us on social media">
             <a href="https://www.instagram.com/jirehassistance" target="_blank" rel="noopener noreferrer" aria-label="Follow @jirehassistance on Instagram">
               <i class="fab fa-instagram" aria-hidden="true"></i>
             </a>
@@ -1842,38 +1886,32 @@
             <span>126 Pond Street Spring Trace, Warden Road, Point Fortin, Trinidad</span>
           </div>
           <div class="ft-ci">
-
-            <div class="d-block">
-              <div class="#">Attika K. Bridgeman</div>
-              <div class="#">Founder &amp; Coordinator</div>
-            </div>
-            
             <i class="fas fa-phone" aria-hidden="true"></i>
-            <a href="tel:18683961806" aria-label="Call local number 1-868-396-1806">1-868-396-1806</a>
-          </div>
-          <div class="ft-ci">
-
-             <div>
-              <div class="#">Liz Bridgeman Plenty</div>
-              <div class="#">Co-Founder</div>
-            </div>
-            
-            <i class="fas fa-phone" aria-hidden="true"></i>
-            <a href="tel:18683167692" aria-label="Call international number 1-868-316-7692">1-868-316-7692</a>
-          </div>
-          <div class="ft-ci">
-
             <div>
-              <div class="#">Adika Philip</div>
-              <div class="#">Community Outreach Lead</div>
+              <div class="ft-nm">Attika K. Bridgeman</div>
+              <div class="ft-rl">Founder &amp; Coordinator</div>
+              <a href="tel:+18683961806" aria-label="Call Attika K. Bridgeman at 1-868-396-1806">1-868-396-1806</a>
             </div>
-            
+          </div>
+          <div class="ft-ci">
             <i class="fas fa-phone" aria-hidden="true"></i>
-            <a href="tel:18682863147" aria-label="Call international number 1-868-286-3147">1-868-286-3147</a>
+            <div>
+              <div class="ft-nm">Liz Bridgeman Plenty</div>
+              <div class="ft-rl">Co-Founder</div>
+              <a href="tel:+18683167692" aria-label="Call Liz Bridgeman Plenty at 1-868-316-7692">1-868-316-7692</a>
+            </div>
+          </div>
+          <div class="ft-ci">
+            <i class="fas fa-phone" aria-hidden="true"></i>
+            <div>
+              <div class="ft-nm">Adika Philip</div>
+              <div class="ft-rl">Community Outreach Lead</div>
+              <a href="tel:+18682863147" aria-label="Call Adika Philip at 1-868-286-3147">1-868-286-3147</a>
+            </div>
           </div>
           <div class="ft-ci">
             <i class="fas fa-envelope" aria-hidden="true"></i>
-            <a href="mailto:bridgemanatika@gmail.com" aria-label="Email Jireh Assistance Group">bridgemanatika@gmail.com</a>
+            <a href="mailto:bridgemanatika@gmail.com" aria-label="Email Jireh Assistance Group at bridgemanatika@gmail.com">bridgemanatika@gmail.com</a>
           </div>
           <div class="ft-ci">
             <i class="fab fa-instagram" aria-hidden="true"></i>
@@ -1910,73 +1948,79 @@
           crossorigin="anonymous" defer></script>
 
   <script>
-    /* ============================================
-       DARK MODE — auto time-of-day + manual toggle
-    ============================================ */
-    const body      = document.body;
-    const btn       = document.getElementById('darkToggle');
-    const icon      = btn.querySelector('i');
+    document.addEventListener('DOMContentLoaded', function () {
 
-    function applyMode(dark) {
-      if (dark) {
-        body.classList.add('dark-mode');
-        icon.classList.replace('fa-moon', 'fa-sun');
-        btn.setAttribute('aria-label', 'Switch to light mode');
-      } else {
-        body.classList.remove('dark-mode');
-        icon.classList.replace('fa-sun', 'fa-moon');
-        btn.setAttribute('aria-label', 'Switch to dark mode');
-      }
-      localStorage.setItem('jireh-theme', dark ? 'dark' : 'light');
-    }
+      /* ============================================
+         DARK MODE — auto time-of-day + manual toggle
+         (storage wrapped in try/catch: blocked/private storage must never break the page)
+      ============================================ */
+      const body = document.body;
+      const btn  = document.getElementById('darkToggle');
+      const icon = btn ? btn.querySelector('i') : null;
 
-    const saved = localStorage.getItem('jireh-theme');
-    if (saved) {
-      applyMode(saved === 'dark');
-    } else {
-      const h = new Date().getHours();
-      applyMode(h < 6 || h >= 18);
-    }
+      function store(key, val) { try { localStorage.setItem(key, val); } catch (e) {} }
+      function read(key)       { try { return localStorage.getItem(key); } catch (e) { return null; } }
 
-    btn.addEventListener('click', () => applyMode(!body.classList.contains('dark-mode')));
-
-
-    /* ============================================
-       SCROLL REVEAL
-    ============================================ */
-    const revEls = document.querySelectorAll('.reveal');
-    const revObs = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
-          revObs.unobserve(entry.target);
+      function applyMode(dark, persist) {
+        body.classList.toggle('dark-mode', dark);
+        if (icon) {
+          icon.classList.remove(dark ? 'fa-moon' : 'fa-sun');
+          icon.classList.add(dark ? 'fa-sun' : 'fa-moon');
         }
-      });
-    }, { threshold: 0.09, rootMargin: '0px 0px -40px 0px' });
+        if (btn) btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+        if (persist) store('jireh-theme', dark ? 'dark' : 'light');
+      }
 
-    revEls.forEach(el => revObs.observe(el));
+      const saved = read('jireh-theme');
+      if (saved) {
+        applyMode(saved === 'dark', false);
+      } else {
+        const h = new Date().getHours();
+        applyMode(h < 6 || h >= 18, false);   // time-based default; only saved once the visitor chooses
+      }
+      if (btn) btn.addEventListener('click', () => applyMode(!body.classList.contains('dark-mode'), true));
 
 
-    /* ============================================
-       ACTIVE NAV HIGHLIGHT ON SCROLL
-    ============================================ */
-    const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
-    const sections = document.querySelectorAll('section[id]');
-
-    const secObs = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === '#' + entry.target.id) {
-              link.classList.add('active');
+      /* ============================================
+         SCROLL REVEAL (falls back to showing everything if IntersectionObserver is unavailable)
+      ============================================ */
+      const revEls = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const revObs = new IntersectionObserver((entries) => {
+          entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+              setTimeout(() => entry.target.classList.add('visible'), i * 80);
+              revObs.unobserve(entry.target);
             }
           });
-        }
-      });
-    }, { threshold: 0.35 });
+        }, { threshold: 0.09, rootMargin: '0px 0px -40px 0px' });
+        revEls.forEach(el => revObs.observe(el));
+      } else {
+        revEls.forEach(el => el.classList.add('visible'));
+      }
 
-    sections.forEach(sec => secObs.observe(sec));
+
+      /* ============================================
+         ACTIVE NAV HIGHLIGHT ON SCROLL (includes the footer #contact target)
+      ============================================ */
+      const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+      const sections = document.querySelectorAll('section[id], footer[id]');
+
+      if ('IntersectionObserver' in window) {
+        const secObs = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + entry.target.id) link.classList.add('active');
+              });
+            }
+          });
+        }, { threshold: 0.35 });
+        sections.forEach(sec => secObs.observe(sec));
+      }
+
+    });
   </script>
 
 </body>
