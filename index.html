@@ -859,6 +859,21 @@
     .cta-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
 
     /* ===========================
+       KEYBOARD FOCUS + SKIP LINK (WCAG 2.4.1 / 2.4.7)
+    =========================== */
+    *:focus-visible { outline: 3px solid var(--green-mid); outline-offset: 3px; border-radius: 3px; }
+    body.dark-mode *:focus-visible,
+    .navbar *:focus-visible, footer *:focus-visible, .float-wa:focus-visible,
+    .hero *:focus-visible, .final-cta *:focus-visible, .principles-sec *:focus-visible, .impact-strip *:focus-visible, .events-sec *:focus-visible { outline-color: var(--gold-light); }
+    *:focus:not(:focus-visible) { outline: none; }
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem; z-index: 10001;
+      background: var(--green-dark); color: #fff; padding: 0.5rem 1rem;
+      border-radius: 0 0 6px 6px; font-weight: 700; text-decoration: none;
+    }
+    .skip-link:focus { top: 0; color: #fff; }
+
+    /* ===========================
        FOOTER
     =========================== */
     footer {
@@ -874,7 +889,7 @@
     .ft-brand span { color: rgba(255,255,255,0.65); font-weight: 400; }
 
     .ft-tagline {
-      font-size: 0.86rem; color: rgba(255,255,255,0.45);
+      font-size: 0.86rem; color: rgba(255,255,255,0.65); /* was 0.45 = 4.45:1, failed AA */
       margin-bottom: 1.5rem; line-height: 1.7;
     }
 
@@ -909,8 +924,9 @@
       margin-top: 3rem; padding: 1.25rem 0;
       display: flex; flex-wrap: wrap; gap: 0.75rem;
       align-items: center; justify-content: space-between;
-      font-size: 0.78rem; color: rgba(255,255,255,0.30);
+      font-size: 0.78rem; color: rgba(255,255,255,0.65); /* was 0.30 = 2.62:1, failed AA */
     }
+    .ft-legal { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; }
     .ft-bottom a { color: var(--gold); text-decoration: none; }
     .ft-bottom a:hover { text-decoration: underline; }
 
@@ -1070,6 +1086,9 @@
 
 <body>
 
+  <!-- Skip to main content — keyboard accessibility (WCAG 2.4.1) -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- ======================================
        NAVBAR
   ====================================== -->
@@ -1114,6 +1133,8 @@
     </div>
   </nav>
 
+
+  <main id="main-content" role="main">
 
   <!-- ======================================
        HERO
@@ -1842,6 +1863,9 @@
   </section>
 
 
+  </main>
+
+
   <!-- ======================================
        FOOTER
   ====================================== -->
@@ -1924,6 +1948,11 @@
 
       <div class="ft-bottom">
         <span>&copy; 2026 Jireh Assistance Group. All rights reserved.</span>
+        <span class="ft-legal">
+          <a href="/legal.html#privacy">Privacy Policy</a>
+          <a href="/legal.html#terms">Terms of Use</a>
+          <a href="/legal.html#accessibility">Accessibility</a>
+        </span>
         <span>Built by <a href="https://jamalsamuel.online" target="_blank" rel="noopener noreferrer" aria-label="Website built by Jamal Samuel — Caribbean web design">Jamal Samuel</a></span>
       </div>
     </div>
